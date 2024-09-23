@@ -1,0 +1,102 @@
+<html>
+	<head>
+		<title>Import My Templates - Case Clipboard</title>
+		<style>
+		body
+		{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			vertical-align: middle;
+			background-color: navy;
+			color: black;
+			height: 100%;
+		}
+		.dragdroparea
+		{
+			display: inline-block;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			height: 480px;
+			width: 852px;
+			border: 2px solid gray;
+			background-color: white;
+			background-image: url("./icons/case-clipboard.png");
+			background-repeat: no-repeat;
+			
+		}
+		.inner
+		{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			vertical-align: middle;
+			border: none;
+			height: 100%;
+			width: auto;
+		}
+		input
+		{
+			font-size: 18px;
+			border: 2px solid green;
+		}
+		.label
+		{
+			font-size: 24px;
+			display: flex;
+			justify-content: top;
+			align-items: top;
+			vertical-align: top;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+		.subheading
+		{
+			font-size: 14px;
+			display: flex;
+			justify-content: top;
+			align-items: top;
+			vertical-align: top;
+			padding-top: 30px;
+			padding-bottom: 5px;
+		}
+		#closewindow
+		{
+			display: inline-block;
+			position: relative;
+			float: right;
+			font-size: 50px;
+			user-select: none;
+			cursor: pointer;
+			vertical-align: top;
+			right: 5px;
+			top: -10px;
+		}
+		#message
+		{
+			font-size: 14px;
+			display: inline-block;
+			position: relative;
+			vertical-align: bottom;
+			bottom: 60px;
+			font-weight: bold;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="dragdroparea">
+			<div id="closewindow" title="Close Window">&times;</div>
+			<div class="inner">
+				<div class="label"><span><img src="./icons/folder_large.png" style="padding-right: 10px;">Import My Templates</span></div>
+				<input name="import-file-mytemplate" id="import-file-mytemplate" type="file" />
+				<div class="subheading"><span>Import a JSON formatted file containing your templates.</span></div>
+			</div>
+			<div id="message"></div>
+		</div>
+		<script style="display:none" type="module" src='./importMyTemplates.js'></script>
+	</body>
+</html>

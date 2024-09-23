@@ -1,0 +1,76 @@
+{
+	"manifest_version": 3,
+	"name": "Case Clipboard",
+	"description": "Case Clipboard for Chrome",
+	"version": "2024.1.31",
+	"homepage_url": "https://github.ibm.com/KENOI/case-clipboard",
+	"icons": {
+		"48": "icons/case-clipboard.png"
+	},
+	"background": {
+		"service_worker": "background.js",
+		 "type": "module"
+	},
+	"action": {
+		"default_icon": "./icons/case-clipboard.png",
+		"default_popup": "actionmenu.html",
+		"default_title": "Case Clipboard"
+	},
+	"options_ui": {
+                "page": "options.html"
+        },
+	"permissions": [
+		"tabs",
+		"activeTab",
+		"contextMenus",
+		"clipboardRead",
+		"clipboardWrite",
+		"notifications",
+		"storage",
+		"scripting"
+	],
+	"content_scripts": [
+		{
+			"exclude_matches": [
+				"*://login.ibm.com/*",
+				"*://login.w3.ibm.com/*"
+			],
+			"matches": [
+				"*://*.force.com/*",
+				"*://*.ibm.com/*",
+				"*://*.myworkday.com/*",
+				"*://*.office.com/*",
+				"*://*.slack.com/*"
+			],
+			"js": [
+				"clipboard-edit.js"
+			]
+		}
+	],
+        "commands": {
+                "cmd-mytemplate-0": {
+                        "suggested_key": {
+                                "default": "Ctrl+Shift+1"
+                        },
+                        "description": "Copy my template #1"
+                },
+                "cmd-mytemplate-1": {
+                        "suggested_key": {
+                                "default": "Ctrl+Shift+2"
+                        },
+                        "description": "Copy my template #2"
+		},
+		"cmd-mytemplate-2": {
+                        "suggested_key": {
+                                "default": "Ctrl+Shift+9"
+                        },
+                        "description": "Copy my template #3"
+                },
+                "cmd-copy-title-url-text": {
+                        "suggested_key": {
+                                "default": "Ctrl+Shift+0"
+                        },
+                        "description": "Copy Title, URL and Text"
+                }
+	}
+}

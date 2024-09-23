@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Case Clipboard Options</title>
+    <style>
+    .subheading, .header
+    {
+    	font-weight: bold;
+    }
+    .specialsequence
+    {
+    	font-family: monospace;
+    }
+    
+    .float
+    {
+    	float: right;
+    }
+    table
+    {
+    	border: 1px solid black;
+    	padding: 2px;
+    }
+    td
+    {
+    	padding-right: 10px;
+    }
+    .definition
+    {
+    	font-style: italic;
+    }
+    .alignmiddle
+    {
+    	vertical-align: middle;
+    }
+    .alignbottom
+    {
+    	vertical-align: bottom;
+    }
+    </style>
+  </head>
+
+  <body>
+  <div>
+  	<img class="alignmiddle" src="./icons/case-clipboard.png"/>
+  	<span class="header vert">Case Clipboard Options</span>
+  </div>
+    <form>
+
+      <table>
+        <tr><td colspan="2" class="subheading">Case URLs</td></tr>
+	      	<tr><td colspan="2" class="definition">Links to resources displayed in the context menu (if case number detected).</td></tr>
+		<tr><label><td class="subheading float">Menu Titles</td><td><span class="subheading">Access URL</span></td></label></tr>
+        <tr class="alignbottom"><label><td>&#x1F517;Link 1:&nbsp;<input style="float: right;" type="text" size="10" id="link1" ></td><td><input type="text" size="60" id="url1" ></td></label></tr>
+        <tr class="alignbottom"><label><td>&#x1F517;Link 2:&nbsp;<input style="float: right;" type="text" size="10" id="link2" ></td><td><input type="text" size="60" id="url2" ></td></label></tr>
+        <tr class="alignbottom"><label><td>&#x1F517;Link 3:&nbsp;<input style="float: right;" type="text" size="10" id="link3" ></td><td><input type="text" size="60" id="url3" ></td></label></tr>
+        <tr class="alignbottom"><label><td>&#x1F517;Link 4:&nbsp;<input style="float: right;" type="text" size="10" id="link4" ></td><td><input type="text" size="60" id="url4" ></td></label></tr>
+        <tr class="alignbottom"><label><td>&#x1F517;Link 5:&nbsp;<input style="float: right;" type="text" size="10" id="link5" ></td><td><input type="text" size="60" id="url5" ></td></label></tr>
+        <!-- <tr><td colspan="2" style="font-style: "italic;">Replace '{query}' with caseno. If it does not exist, caseno will be added at the end<br>If URL is end with '{nocase}, caseno will not be added.')</td></tr>-->
+        <tr><td colspan="2" class="definition">The case number is automatically appended</br>To prevent this, append the variable <span class="specialsequence">{nocase}</span> at the end of the URL</td></tr>
+        <tr><td colspan="2">&nbsp;</td></tr>
+        <tr><td class="subheading" colspan="2">Paste Formatting</td></tr>
+        <tr><td colspan="2" class="definition">The Title and URL clipboard output can be customized</td></tr>
+        <tr><td class="header float">Variables</td><td class="header">Description</td></tr>
+        <tr><td class="specialsequence float">{title}</td><td>Title of web page</td></tr>
+        <tr><td class="specialsequence float">{url}</td><td>URL of web page</td></tr>
+        <tr><td class="specialsequence float">\n</td><td>Represents a new line</td></tr>
+        <tr><td colspan="2"><input type="text" size="70" id="cpformat1" ></td></tr>
+        <tr><td colspan="2">&nbsp;</td></tr>
+        <tr><td colspan="2" class="subheading">Template Special Sequences</td></tr>
+        <tr><td colspan="2" class="definition">Keys are replaced with these configurable values when pasting a template.</td></tr>
+        <tr><label><td class="header float">Key</td><td class="header">Value<br></td></label></tr>
+        <tr><label><td class="specialsequence float">{sep}</td><td><input type="text" size="60" id="sep" ></td></label></tr>
+        <tr><label><td class="specialsequence float">{owner}</td><td><input type="text" size="60" id="owner" ></td></label></tr>
+        <tr><label><td class="specialsequence float">{team}</td><td><input type="text" size="60" id="team" ></td></label></tr>
+		<tr><label><td class="specialsequence float">{schedule}</td><td><input type="text" size="60" id="schedule" ></td></label></tr>
+        <tr><label><td class="specialsequence float">{alt-owner}</td><td><input type="text" size="60" id="altowner" ></td></label></tr>
+        <tr><label><td class="specialsequence float">{alt-team}</td><td><input type="text" size="60" id="altteam" ></td></label></tr>
+        <tr><td colspan="2">&nbsp;</td></tr>
+        <tr><td colspan="2" class="subheading">Date Stamp Customization</td></tr>
+        <tr><td colspan="2" class="definition">Customize the date formatting for sequences <code>{date}</code> and <code>{date+X}</code></td></tr>
+        <tr><td colspan="2"><input type="text" size="80" id="customdate"></input></td></tr>
+        <tr class="alignbottom"><td><label class="float">Custom Locale:</label></td><td><input type="text" size="10" id="customlocale" ></td></tr>
+        <tr><td colspan="2">&nbsp;</td></tr>
+        <tr><td colspan="2">Example Date:<br/>
+        <label id="dateexample"></label></td></tr>
+        <tr><td colspan="2">&nbsp;</td></tr>
+        <tr><td colspan="2" class="subheading">Pasting Templates</td></tr>
+        <tr><td colspan="2" class="definition">Set templates to paste directly to <code>textarea</code> and editable elements (excluding frames)</td></tr>
+        <tr><td colspan="2"><div class="float"><input type="checkbox" name="pastetemplatetotextarea" id="pastetemplatetotextarea"/><label class="no-select" for="pastetemplatetotextarea">Automatically Paste Templates to Editable Text Box</label></div></td><tr>
+        <tr><td colspan="2">&nbsp;</td></tr>
+        <tr><td colspan="2" class="subheading">Shared Templates URL</td></tr>
+        <tr><td colspan="2" class="definition">URL where to obtain shared templates</td></tr>
+		<tr><td colspan="2"><input type="text" size="70" id="sharedurl" ></td></tr>
+	    <tr><td colspan="2"><input style="opacity:0; visibility:hidden;"name="import-file" id="import-file" type="file" />
+     	<button class="float"><label for="import-file" name="import-file-button" id="import-file-button">Import Shared Templates from File...</label></button></td></tr>
+     	<tr><td colspan="2"><button class="float" name="export-file" id="export-file">Export Shared Templates to File...</button></td></tr>
+     	<tr><td colspan="2"><span id="file-message"></span></td></tr>
+        <!--
+        <tr><td colspan="2">&nbsp;</td></tr>
+        <tr><td colspan="2" class="subheading">Max size of Shared Templates and My Templates</td></tr>
+        <tr><td colspan="2" class="definition">Set the maximum size of the templates list.  Both template lists use the same max value.</br>Allowed range is from 20 to 99. You may need to restart the browser to apply the change.</td></tr>
+        <tr><td colspan="2"><input type="number" id="templatemax" value="20" required min="20" max="99" autocomplete="off"></td></tr>
+        -->
+        <tr><td colspan="2">&nbsp;</td></tr>
+        <tr><td colspan="2" class="subheading">UNIX Path Formatting</td></tr>
+        <tr><td colspan="2" class="definition">UNIX Path prefix can be customized. Predefined paths will be suggested when you input text</td></tr>
+        <tr><td colspan="2"><input type="text" size="70" id="unixpathprefix" autocomplete="on" list="unixpathprefixlist" value="/ecurep/sf">
+            <datalist id="unixpathprefixlist">
+            <option value="/ecurep/sf">/ecurep/sf</option>
+            <option value="/cygdrive/s/sf">/cygdrive/s/sf</option>
+            </input>
+        </td></tr>
+      </table>
+		<br/>
+      <button type="submit">Save Options</button>
+
+    </form>
+
+    <script type="module" src="options.js"></script>
+
+  </body>
+
+</html>

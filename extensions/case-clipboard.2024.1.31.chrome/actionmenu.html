@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Action Menu</title>
+		<link rel="stylesheet" href="PseudoCarbonUI.css" />
+		<link rel="stylesheet" href="PseudoCarbonIcons.css" />
+		<style>
+		body
+		{
+ 			min-width: max-content;
+			margin: 0px;
+			border-collapse: collapse;
+			user-select:none;
+			padding: 0 1px;
+		}
+		
+		</style>
+	</head>
+	<body>
+			<menu id="actionmenu">
+				<li class="menuitem" name="import-file-sharedtemplate" id="import-file-sharedtemplate" href="./importSharedTemplates.html"	tabindex="0">
+						<div class="menuicon import-icon">
+						</div>
+					<span class="menutext">Import Shared Templates...</span>
+				</li>
+				<li class="">
+					<label class="menuitem" id="export-file-sharedtemplate" tabindex="0">
+						<div class="menuicon export-icon"></div>
+					<span class="menutext">Export Shared Templates...</span>
+					</label>
+				</li>
+				<li class="menuseparator">
+				</li>
+				<li class="menuitem" name="import-file-mytemplate" id="import-file-mytemplate" href="./importMyTemplates.html" tabindex="0">
+						<div class="menuicon import-icon"></div>
+					<span class="menutext">Import My Templates...</span>
+				</li>
+				<li class="">
+					<label class="menuitem" id="export-file-mytemplate" tabindex="0">
+						<div class="menuicon export-icon"></div>
+						<span class="menutext">Export My Templates...</span>
+					</label>
+				</li>
+				<li class="menuitem" id="mytemplate-update" href="./TemplateEditor.html" tabindex="0">
+					<div class="menuicon pencil-icon"></div>
+					<span class="menutext">Template Editor...</span>
+				</li>
+				<li class="menuitem" id="mytemplate-update-advanced" href="./AdvancedTemplateEditor.html" tabindex="0"><div class="menuicon pen-icon"></div><span class="menutext">Advanced Template Editor...</span>
+				</li>
+				<li class="menuitem" href="https://github.ibm.com/KENOI/case-clipboard/blob/master/AdvancedTemplateEditor.md" tabindex="0">
+					<div class="menuicon help-icon"></div>
+					<span class="menutext">Editor Documentation</span>
+				</li>
+				<li class="menuseparator">
+				</li>
+				<li class="menuitem" id="pastetemplatetotextarea" tabindex="0">
+					<div class="menuicon checkbox"></div>
+					<span class="menutext">Automatically Paste Templates</span>
+				</li>
+				<li class="menuseparator">
+				</li>
+				<li class="menuitem" id="options" href="./options.html" tabindex="0">
+					<div class="menuicon options-icon"></div>
+					<span class="menutext">Options...</span>
+				</li>
+				<li class="menuitem" id="bug" href="https://github.ibm.com/KENOI/case-clipboard/issues" tabindex="0">
+					<div class="menuicon bug-icon"></div>
+					<span class="menutext">Report a Bug...</span>
+				</li>
+				<li class="menuitem" id="slack" href="https://ibm-cloud.slack.com/archives/C056Q47GXQ9" tabindex="0">
+					<div class="menuicon slack-icon"></div>
+					<span class="menutext">Open Slack Channel...</span>
+				</li>
+				<li class="menuitem" id="about" href="https://github.ibm.com/KENOI/case-clipboard" tabindex="0">
+					<div class="menuicon">
+						<img class="imageicon" height="16" width="16" src="./icons/case-clipboard.png"/>
+					</div>
+					<span class="menutext">About Case Clipboard</span>
+				</li>
+			</menu>
+		</div>
+		<script style="display:none" type="module" src='./actionmenu.js'></script>
+	</body>
+</html>

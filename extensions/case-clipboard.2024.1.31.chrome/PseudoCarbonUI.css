@@ -1,0 +1,744 @@
+:root
+{
+		--svg-checkmark: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cG9seWdvbiBwb2ludHM9IjEzIDI0IDQgMTUgNS40MTQgMTMuNTg2IDEzIDIxLjE3MSAyNi41ODYgNy41ODYgMjggOSAxMyAyNCIvPjxyZWN0IGlkPSJfVHJhbnNwYXJlbnRfUmVjdGFuZ2xlXyIgZGF0YS1uYW1lPSImbHQ7VHJhbnNwYXJlbnQgUmVjdGFuZ2xlJmd0OyIgZmlsbD0ibm9uZSIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIi8+PC9zdmc+');
+
+}
+			body, html
+			{
+/*				display: flex;*/
+/*				flex-direction: column;*/
+/*				height: 100%;*/
+/*				min-height: 0;*/
+				font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+				font-size: revert;
+			}
+
+/*Classes representing generic settings*/
+			.hidden
+			{
+				opacity:0;
+				visibility:hidden;
+				display: none;
+			}
+			
+			.displaynone
+			{
+				display: none !important;
+			}
+			
+			.no-select
+			{
+				user-select: none;
+			}
+
+			.toolbar
+			{
+				display: flex;
+				flex-direction: row;
+				flex-grow: 0;
+				gap: var(--gap-toolbar-button);
+				/*margin: 1px;*/
+			}
+			
+			.toolbarvertical
+			{
+				display: flex;
+				flex-direction: column;
+				flex-grow: 0;
+				gap: 1px;
+/* 				margin: 1px; */
+			}
+
+/* Buttons */
+			button, .button
+			{
+				border-color: #C0C0C0;
+				border-width: 1px;
+				background-color: #E0E0E0;
+				border-radius: 0px;
+				border-style: solid;
+				border-color: transparent;
+				user-select: none;
+				font-family: sans-serif;
+				font-size: medium;
+				gap: 0px;
+				width: 100%;
+				text-align: center;
+				min-height: 25px;
+				cursor: pointer;
+				font-family: "IBM Plex Sans VF", "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+				outline: none;
+				
+/* Helps make labels and buttons look the same */
+				display: inline-flex;
+				box-sizing: border-box;
+				align-items: center;
+				justify-content: space-between;
+				padding-left: 4px;
+				padding-right: 4px;
+				padding-bottom: 5px;
+				text-align: left;
+				
+				padding-block-start: 14px;
+ 				padding-inline-start: 15px;
+ 				padding-inline-end: 15px;
+				
+				
+			}
+			
+ 			button:focus, .button:focus 
+			{ 
+/*  				outline: 1px auto Highlight;  */
+/* 				outline: 1px auto -webkit-focus-ring-color;  */
+			} 
+			
+			label.button
+			{
+				display: inline-flex;
+				box-sizing: border-box;
+				align-items: center;
+				justify-content: space-between;
+
+			}
+			
+			button:hover, .button:hover
+			{
+				background-color: #F5F5F5;
+			}
+			
+			button:active, .button:active
+			{
+				background-color: #D0D0D0;
+			}
+			
+			button:disabled
+			{
+				background-color: #F5F5F5 !important;
+				cursor: not-allowed;
+			}
+			
+	
+/* Primary Button */
+
+			.primary-button
+			{
+				background-color: #0f62fe;
+				color: white;
+			}
+			
+			.primary-button:hover
+			{
+				background-color: #0050e6;
+				
+			}
+			
+			.primary-button:focus
+			{
+				box-shadow: #0f62fe 0 0 0 1px inset, #f4f4f4 0 0 0 2px inset !important;
+				border-color: #0f62fe !important;
+			}
+			
+			.primary-button:active
+			{
+				background-color: #002d9c !important;
+			}
+			
+			.primary-button:disabled
+			{
+				background-color: #c6c6c6 !important;
+				border-color: #c6c6c6 !important;
+				box-shadow: none !important;
+				color: #8d8d8d !important;
+			}
+			
+			.primary-button > span
+			{
+				background-color: white !important;
+			}
+			
+			.primary-button:disabled > span
+			{
+				background-color: #8d8d8d !important;
+			}
+			
+/* Secondary Button */
+			.secondary-button
+			{
+				background-color: #393939;
+				color: white;
+			}
+			
+			.secondary-button:hover
+			{
+				background-color: #474747;
+				
+			}
+			
+			.secondary-button:focus
+			{
+				box-shadow: #0f62fe 0 0 0 1px inset, #f4f4f4 0 0 0 2px inset !important;
+				border-color: #0f62fe !important;
+			}
+			
+			.secondary-button:active
+			{
+				background-color: #6f6f6f !important;
+			}
+			
+			.secondary-button:disabled
+			{
+				background-color: #c6c6c6 !important;
+				border-color: #c6c6c6 !important;
+				box-shadow: none !important;
+				color: #8d8d8d !important;
+			}
+			
+			.secondary-button > span
+			{
+				background-color: white !important;
+			}
+			
+			.secondary-button:disabled > span
+			{
+				background-color: #8d8d8d !important;
+			}
+
+/* Tertiary Button */
+			.tertiary-button
+			{
+				background-color: transparent;
+				color: #0f62fe;
+				border: 1px solid #0f62fe;
+			}
+			
+			.tertiary-button:hover
+			{
+				background-color: #0050e6;
+				color: white;
+				
+			}
+			
+			.tertiary-button:focus
+			{
+				box-shadow: #0f62fe 0 0 0 1px inset, #f4f4f4 0 0 0 2px inset !important;
+				border-color: #0f62fe !important;
+				background-color: #0f62fe;
+				color: white !important;
+			}
+			
+			.tertiary-button:active
+			{
+				color: white !important;
+				background-color: #002d9c !important;
+				border-color: transparent !important;
+			}
+			
+			.tertiary-button:disabled
+			{
+				background-color: transparent !important;
+				border-color: #c6c6c6 !important;
+				box-shadow: none !important;
+				color: #8d8d8d !important;
+				outline: none !important;
+			}
+			
+			.tertiary-button > span
+			{
+				background-color: #0f62fe !important;
+			}
+			
+			.tertiary-button:focus > span
+			{
+				background-color: white !important;		
+				color: white !important;	
+			}
+	
+			.tertiary-button:hover > span,
+			.tertiary-button:active > span
+			{
+
+				background-color: white !important;
+			}
+						
+			.tertiary-button:disabled > span
+			{
+				background-color: #8d8d8d !important;
+			}
+/* Ghost Button */
+			.ghost-button
+			{
+				background-color: transparent;
+				color: #0f62fe;
+				border: 1px solid transparent;
+				padding-inline-end: 15px;
+			}
+			
+			.ghost-button:hover
+			{
+ 				background-color: rgb(232, 232, 232);
+				color: #0043ce;
+				
+			}
+			
+			.ghost-button:focus
+			{
+				box-shadow: #0f62fe 0 0 0 1px inset, #f4f4f4 0 0 0 2px inset !important;
+				border-color: #0f62fe !important;
+			}
+			
+			.ghost-button:active
+			{
+				color: #0043ce !important;
+				background-color: rgba(140, 140, 140, 0.5) !important;
+				border-color: transparent !important;
+			}
+			
+			.ghost-button:disabled
+			{
+				background-color: transparent !important;
+				border-color: transparent !important;
+				box-shadow: none !important;
+				outline: none !important;
+				color: #8d8d8d !important;
+			}
+			
+			.ghost-button > span
+			{
+				background-color: #0f62fe !important;
+			}
+			
+			.ghost-button:hover > span,
+			.ghost-button:focus > span,
+			.ghost-button:active > span
+			{
+				background-color: #0f62fe !important;
+			}
+						
+			.ghost-button:disabled > span
+			{
+				background-color: #8d8d8d !important;
+			}
+/* Danger Button */
+			
+			.danger-button, .danger-menuitem
+			{
+				background-color: #da1e28;
+				color: white;
+			}
+			
+			.danger-button:hover, .danger-menuitem:hover
+			{
+				background-color: #b81921;
+				
+			}
+			
+			.danger-button:focus, .danger-menuitem:focus
+			{
+				box-shadow: #0f62fe 0 0 0 1px inset, #f4f4f4 0 0 0 2px inset !important;
+				border-color: #0f62fe !important;
+			}
+			
+			.danger-button:active, .danger-menuitem:active
+			{
+				background-color: #750e13 !important;
+			}
+			
+			.danger-button:disabled, .danger-menuitem:disabled
+			{
+				background-color: #c6c6c6 !important;
+				border-color: #c6c6c6 !important;
+				box-shadow: none !important;
+				color: #8d8d8d !important;
+			}
+			
+			.danger-button > span, .danger-menuitem > span
+			{
+				background-color: white !important;
+			}
+			
+			.danger-button:hover > span,
+			.danger-button:focus > span,
+			.danger-button:active > span,
+			.danger-menuitem:hover > span,
+			.danger-menuitem:focus > span,
+			.danger-menuitem:active > span			
+			{
+				background-color: white !important;
+			}
+			
+			.danger-button:disabled > span,
+			.danger-menuitem:disabled > span
+			{
+				background-color: #8d8d8d !important;
+			}
+
+
+/* Danger Menu Item */
+			.danger-menuitem
+			{
+			
+				background-color: red;
+				color: white;
+			
+			}
+			
+			.danger-menuitem > span
+			{
+				background-color: white;
+			}
+
+/* Text Input and Textarea */
+
+			input, select
+			{
+				background-color: rgb(244, 244, 244);
+				border: none;
+				border-bottom: 1px solid rgb(22,22,22);
+				box-sizing: border-box;
+				color: #161616;
+				font-family: inherit;
+				font-size: medium;
+				outline: 2px solid transparent;
+				outline-offset: -2px;
+				padding: 0 16px;
+				vertical-align: baseline;
+				width: 100%;
+				
+			}
+			
+			textarea
+			{
+				background-color: rgb(244, 244, 244);
+				border: none;
+				border-bottom: 1px solid rgb(22,22,22);
+				box-sizing: border-box;
+				color: #161616;
+				font-family: IBM Plex Mono, monospace;
+				font-size: medium;
+				outline: 2px solid transparent;
+				outline-offset: -2px;
+				padding: 10px 16px;
+				vertical-align: baseline;
+				width: 100%;
+			}
+			
+			input:focus, input:active, textarea:focus, textarea:active, select:focus, select:active
+			{
+				outline: 2px solid #0f62fe;
+				outline-offset: -2px;
+			}
+			
+			input::placeholder, textarea::placeholder
+			{
+				color: hsla(0,0%,9%,.4);
+				opacity:1
+			}
+			
+/*Additional flex settings for various elements*/
+
+			button.checkbutton, .button.checkbutton
+			{
+				flex-grow: 0;
+				flex-basis: 0;
+				align-self: flex-end;
+				width: auto;
+				justify-content: center;
+				vertical-align: middle;
+ 				padding-block-start: unset !important;
+ 				padding-inline-start: unset !important;
+ 				padding-inline-end: unset !important;
+ 				padding: 10px !important; 
+			}
+			
+			button.button-onlyicon, .button.button-onlyicon
+			{
+ 				padding-block-start: unset !important;
+ 				padding-inline-start: unset !important;
+ 				padding-inline-end: unset !important;
+ 				padding: 10px !important; 
+ 				justify-content: center;
+				vertical-align: middle;
+ 			}
+			
+			button.toolbarbutton-left, .button.toolbarbutton-left
+			{
+				flex-grow: 0;
+				flex-basis: 0;
+				align-self: flex-end;
+				width: auto;
+			}
+			
+			input.checkbutton
+			{
+				flex-grow: 0;
+				flex-shrink: 0;
+				flex-basis: 0;
+				align-self: flex-end;
+				width: auto;
+			}
+
+/*Context Menu CSS*/
+
+			.contextmenu
+			{
+				display: block;
+				position: absolute;
+			}
+			
+			.contextmenu, .actionmenu
+			{
+				display: flex;
+				border-collapse:collapse;
+				padding:0px;
+				
+				margin: 0px;
+			}
+			
+			.contextmenu > menu,
+			menu.actionmenu,
+			menu
+			{
+				list-style: none;
+				font-family: IBM Plex Sans, Segoe UI, SF Pro, Helvetica, Arial, sans-serif;
+				user-select:none;
+				border-collapse: collapse;								
+				box-sizing: border-box;
+				  padding: 0;
+				  border: 0;
+				  margin: 0;
+				  font-family: inherit;
+				  font-size: 100%;
+				  vertical-align: baseline;
+				  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+				  position: relative;
+				  z-index: 9000;
+				  padding: .25rem 0;
+				  background-color: #f4f4f4;
+				  color: #f4f4f4;
+				  max-inline-size: max-content;
+				  min-inline-size: 10rem;
+/*				  opacity: 0;*/
+/*				  visibility: hidden;*/
+			}
+			
+/*			menu.actionmenu > li:not(.subheading),*/
+			.overflow-button
+			{
+				font-size: 0.875rem;
+				  font-weight: 400;
+				  line-height: 1.28572;
+				  letter-spacing: 0.16px;
+				  outline: 2px solid transparent;
+				  outline-offset: -2px;
+				  display: inline-flex;
+				  align-items: center;
+				  padding: 0 1rem;
+				  border: none;
+				  background-color: transparent;
+				  block-size: 100%;
+				  color: #525252;
+				  cursor: pointer;
+				  font-family: inherit;
+				  font-weight: 400;
+				  inline-size: 100%;
+				  max-inline-size: 11.25rem;
+				  text-align: start;
+				  transition: outline 110ms cubic-bezier(0,0,.38,.9),background-color 110ms cubic-bezier(0,0,.38,.9),color 110ms cubic-bezier(0,0,.38,.9);				
+			}
+			
+			menu > li:not(.subheading):hover,
+			.overflow-button:hover,
+			.menuitem:hover
+			{
+				color: #161616;
+				background-color: #e8e8e8;	
+				
+			}
+			
+			menu > li:not(.subheading):focus,
+			.overflow-button:focus,
+			.menuitem:focus
+			{
+				outline: 2px solid #0f62fe;
+  				outline-offset: -2px;
+  			}
+			
+			menu > li:not(.separator, .menuseparator, .menuitem)
+			{
+				display: inline-flex;
+				vertical-align: middle;
+				cursor: pointer;
+				min-width: 100%;
+				align-items: left;
+				justify-content: left;
+				
+/*				padding-top: 2px;*/
+/*				padding-bottom: 2px;*/
+				
+				gap: 10px;
+				
+				min-height: 2rem;
+				border-width: 2px;
+				border-style: none;
+				
+				width: 100%;
+
+			}
+			
+			.contextmenu > menu > li > span:first-of-type
+			{
+				margin-left: 5px;
+				margin-right: 5px;
+			}
+			
+			.contextmenu > menu > li:hover:not(.subheading)
+			{
+				color: white;
+				background-color: dodgerblue;
+			}
+			
+			.contextmenu > menu > li:active:not(.subheading),
+			.contextmenu > menu > li:focus:not(.subheading)
+			{
+ 				outline: 1px auto Highlight;
+ 				outline: 1px auto -webkit-focus-ring-color;
+
+/* 				color: white; */
+/* 				background-color: dodgerblue; */
+			}
+						
+			.contextmenu > menu > li:hover:not(.subheading) > span:first-of-type
+			/*,
+			.contextmenu > menu > li:focus:not(.subheading) > span:first-of-type,
+			.contextmenu > menu > li:active:not(.subheading) > span:first-of-type*/
+			{
+				color: white;
+				background-color: white;
+			}
+			
+			.contextmenu > menu > li.separator,
+			.menuseparator
+			{
+				display: block;
+				  background-color: #E0E0E0;
+				  block-size: .0625rem;
+				  inline-size: 100%;
+				  margin-block: .25rem;
+			}
+			
+			.contextmenu > menu > li.separator:active,
+			.contextmenu > menu > li.separator:focus,
+			.menuseparator:active,
+			.menuseparator:focus
+			{
+				outline: none;
+			}
+			
+			.contextmenu > menu > li.separator:hover,
+			.contextmenu > menu > li.separator:focus,
+			.contextmenu > menu > li.separator:active,
+			.menuseparator:hover,
+			.menuseparator:focus,
+			.menuseparator:active
+			{
+				cursor: initial;
+				
+			}
+			
+			.contextmenu > menu > li > div
+			{
+				flex-grow:1;
+			}
+			
+ 			.contextmenu > menu > li > :last-child
+ 			{ 
+ 				margin-right: 5px;
+ 			}
+
+			.menutext
+			{
+				justify-content: left;
+				text-align:left;
+			}
+ 
+			.menuitem
+			{
+				cursor: pointer;
+				font-size: larger;
+				flex-shrink: 1;	
+				
+				/*GRID*/
+/*				grid-template-columns: 1rem 1fr -webkit-max-content;*/
+/*				grid-template-columns: 1rem 1fr max-content;*/
+				
+				/*GRID*/
+				font-size: 0.875rem;
+				font-weight: 400;
+				line-height: 1.28572;
+				letter-spacing: 0.16px;
+				display: grid;
+				align-items: center;
+				block-size: 2rem;
+				color: #161616;
+				-webkit-column-gap: .5rem;
+				-moz-column-gap: .5rem;
+				column-gap: .5rem;
+				cursor: pointer;
+				grid-template-columns: 1rem 1fr -webkit-max-content;
+				grid-template-columns: 1rem 1fr max-content;
+				padding-inline: 1rem;
+				transition: background-color 70ms cubic-bezier(.2,0,.38,.9);
+				
+				width: inherit;
+   			}
+			
+	 		.menuitem > *
+	 		{
+	 			display: flex;
+	 			gap: 1rem;
+				padding: initial;
+	 		}
+	 		
+	 		.menuitem > label
+	 		{
+				 
+			}
+	 		
+	 		.menuitem > *:active
+	 		{
+				background-color: inherit;
+			}
+			
+	 		.menuitemdisabled, .menuitemdisabled:hover, .menuitemdisabled:focus,
+	 		.disabled, .disabled:hover, .disabled:focus
+	 		{
+				 color: rgba(22,22,22,0.25) !important;
+				 cursor: not-allowed !important; 
+				 background-color: #f4f4f4 !important;
+				 outline: none !important;
+				 pointer-events: none;
+			}
+			
+			.danger:hover, .danger:focus, .danger:active
+			.menuitemdanger:hover, .menuitemdanger:focus, .menuitemdanger:active
+			{
+				background-color: #da1e28 !important;
+				color: #ffffff !important;
+			}
+			
+			.menuitemchecked > .menuicon, .checked > .menuicon
+			{
+				mask: var(--svg-checkmark);
+				-webkit-mask-box-image: var(--svg-checkmark);
+				mask-size: cover;
+				background-color: currentcolor;
+			}
+			
+			.menuitemradioenabled > .menuicon, .radioenabled > .menuicon
+			{
+				mask: var(--svg-checkmark);
+				-webkit-mask-box-image: var(--svg-checkmark);
+				mask-size: cover;
+				background-color: currentcolor;
+			}
+			

@@ -1,0 +1,521 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Template Editor for Case-Clipboard</title>
+		<!-- <link rel="stylesheet" href="PseudoCarbonUI.css"></link> --><!-- For implementing the Pseudo Carbon UI in the original template editor -->
+	<style>
+	/* For setting up resize for the textarea */
+			body, html
+			{
+				display: flex;
+				flex-direction: column;
+				height: 100%;
+				min-height: 0;
+			
+			}
+			
+			#main, #editor
+			{
+				display: inline-flex;
+				flex-direction: column;
+				height: 100%;
+				min-height: 0;
+			}
+			
+			.menubar
+			{
+				display: unset;
+			}
+			
+			#editorArea
+			{
+				display: flex;
+				width: 100%;
+				height: 100%;
+				flex-wrap: nowrap;
+				flex-grow: 0;
+				flex-shrink: 1;
+				max-width: 100%;
+				max-height: 100%;
+				
+			}
+/*For the template select box*/
+			@counter-style menu-item {
+			  system: decimal;
+			  pad: 2 "\002007";
+			}
+			
+			#templatechoice
+			{
+				counter-reset: menuitem submenu submenuitem;
+				max-height: 300px;
+			}
+			
+			#templatechoice > option
+			{
+				
+			}
+			
+			#templatechoice > option.template
+			{
+				font-weight: normal;
+			}
+			
+			#templatechoice > option.menuitem
+			{
+				counter-reset: submenuitem;
+				counter-increment: menuitem;
+			}
+			
+			#templatechoice > option.menuitem::before
+			{
+				content: counters(menuitem, ".", decimal-leading-zero) " - ";
+
+			}
+			
+			#templatechoice > option.submenu
+			{
+ 				counter-reset: submenuitem;
+				counter-increment: menuitem;
+				font-weight: bold !important;
+				color: blue !important;
+			}
+			
+			#templatechoice > option.submenu::before
+			{
+				content: counters(menuitem, ".", decimal-leading-zero) " ▶ " !important;
+				color: blue !important;
+			}
+			
+			#templatechoice > option.submenuitem
+			{
+				counter-increment: submenuitem;
+				counter-increment: menuitem;
+				color: blue;
+			}
+			
+			#templatechoice > option.submenuitem::before
+			{
+/* 				content:'    ▷ '; */
+				content: "\002007\002007\002007" /*counters(submenuitem, ".", lower-alpha)*/ " ▷ " ;
+				color: blue;
+				font-weight: bold;
+
+			}
+			
+			#templatechoice > option.separator
+			{
+/* 				font-weight: bold; */
+			}
+			
+			#templatechoice > option.separator::before		
+			{
+				content: counters(menuitem, '.', decimal-leading-zero) ' - ————————————————' !important;
+			}
+			
+			#templatechoice > option.separator.submenuitem::before		
+			{
+				content: "\002007\002007\002007" /*counters(submenuitem, ".", lower-alpha)*/ " ▷ " '——————————————' !important;
+			}
+			
+			#templatechoice > option.numsp::before
+			{
+/* 				content:' '; */
+			}	
+			
+/* ICONS */
+			/*.exampleicon > span
+			{
+				mask: var(--svg-casedescription);
+				-webkit-mask-box-image: var(--svg-casedescription);
+				mask-size: cover;
+				background-color: black;
+			}
+			
+			<button class="exampleicon largeicon">Example<span></span></div>
+			*/
+			
+			.infoicon > span
+			{
+				mask: var(--svg-info);
+				-webkit-mask-box-image: var(--svg-info);
+				mask-size: cover;
+				background-color: black;
+			}
+									
+			.arrowup > span
+			{
+				mask: var(--svg-arrow);
+				-webkit-mask-box-image: var(--svg-arrow);
+				mask-size: cover;
+				background-color: blue;
+			}
+			
+			.arrowdown > span
+			{
+				mask: var(--svg-arrow);
+				-webkit-mask-box-image: var(--svg-arrow);
+				mask-size: cover;
+				transform: rotate(180deg);
+				background-color: blue;
+			}
+			
+			.deleteicon > span
+			{
+				mask: var(--svg-delete);
+				-webkit-mask-box-image: var(--svg-delete);
+				mask-size: cover;
+				background-color: red;
+			}
+			
+			.addicon > span
+			{
+				mask: var(--svg-add);
+				-webkit-mask-box-image: var(--svg-add);
+				mask-size: cover;
+				background-color: green;
+			}
+			
+			.separatoricon > span
+			{
+				mask: var(--svg-separator);
+				-webkit-mask-box-image: var(--svg-separator);
+				mask-size: cover;
+				background-color: green;
+			}
+			.submenuicon > span
+			{
+				mask: var(--svg-submenu);
+				-webkit-mask-box-image: var(--svg-submenu);
+				background-color: green;
+			}
+			
+			.submenu2icon > span
+			{
+				mask: var(--svg-submenu2);
+				-webkit-mask-box-image: var(--svg-submenu2);
+				background-color: green;
+			}
+			
+			.attachicon > span
+			{
+				mask: var(--svg-attach);
+				-webkit-mask-box-image: var(--svg-attach);
+				mask-size: cover;
+				background-color: blue;
+			}
+			
+			.detachicon > span
+			{
+				mask: var(--svg-attach);
+				-webkit-mask-box-image: var(--svg-attach);
+				mask-size: cover;
+				transform: rotate(180deg);
+				background-color: blue;
+			}
+			
+			.checkicon > span
+			{
+				mask: var(--svg-check);
+				-webkit-mask-box-image: var(--svg-check);
+				mask-size: cover;
+				background-color: green;
+			}
+			
+			.cancelicon > span
+			{
+				mask: var(--svg-cancel);
+				-webkit-mask-box-image: var(--svg-cancel);
+				mask-size: cover;
+				background-color: maroon;
+			}
+			
+			.clearicon > span
+			{
+				mask: var(--svg-eraseall);
+				-webkit-mask-box-image: var(--svg-eraseall);
+				mask-size: cover;
+				background-color: black;
+			}
+						
+			.repairicon > span
+			{
+				mask: var(--svg-repair);
+				-webkit-mask-box-image: var(--svg-repair);
+				mask-size: cover;
+				background-color: blue;
+			}
+
+			.hamburgermenuicon > span
+			{
+				mask: var(--svg-hamburgermenu);
+				-webkit-mask-box-image: var(--svg-hamburgermenu);
+				mask-size: cover;
+				background-color: black;
+			}
+			
+			.overflowicon > span, .overflowmenuicon > span
+			{
+				mask: var(--svg-overflowmenu);
+				-webkit-mask-box-image: var(--svg-overflowmenu);
+				mask-size: cover;
+				background-color: black;
+			}
+
+			.collapseicon > span
+			{
+				mask: var(--svg-collapse);
+				-webkit-mask-box-image: var(--svg-collapse);
+				mask-size: cover;
+				background-color: black;
+			}
+			
+			.importicon > span
+			{
+/* 				background-image: var(--img-smallfolder); */
+/* 				height: 16px !important; */
+/* 				width: 16px !important; */
+
+				mask: var(--svg-folder);
+				-webkit-mask-box-image: var(--svg-folder);
+				mask-size: cover;
+				background-color: dodgerblue;
+			}
+			
+			.exporticon > span
+			{
+				mask: var(--svg-export);
+				-webkit-mask-box-image: var(--svg-export);
+				mask-size: cover;
+				background-color: dodgerblue;
+			}
+			
+			.saveicon > span
+			{
+				mask: var(--svg-save);
+				-webkit-mask-box-image: var(--svg-save);
+				mask-size: cover;
+				background-color: blue;
+			}
+			
+			.cuticon > span
+			{
+				mask: var(--svg-cut);
+				-webkit-mask-box-image: var(--svg-cut);
+				mask-size: cover;
+				background-color: dodgerblue;
+			}
+			
+			.copyicon > span
+			{
+				mask: var(--svg-copy);
+				-webkit-mask-box-image: var(--svg-copy);
+				mask-size: cover;
+				background-color: dodgerblue;				
+			}
+			
+			.pasteicon > span
+			{
+				mask: var(--svg-paste);
+				-webkit-mask-box-image: var(--svg-paste);
+				mask-size: cover;
+				background-color: dodgerblue;	
+			}			
+			
+			.reloadicon > span
+			{
+				mask: var(--svg-reload);
+				-webkit-mask-box-image: var(--svg-reload);
+				mask-size: cover;
+				background-color: black;
+			}
+			
+			.reloadallicon > span
+			{
+				mask: var(--svg-reloadall);
+				-webkit-mask-box-image: var(--svg-reloadall);
+				mask-size: cover;
+				background-color: black;
+			}
+			
+			.rebuildmenuicon > span
+			{
+				mask: var(--svg-rebuildmenu);
+				-webkit-mask-box-image: var(--svg-rebuildmenu);
+				mask-size: cover;
+				background-color: black;
+			}
+
+			.tabicon > span
+			{
+				mask: var(--svg-tab);
+				-webkit-mask-box-image: var(--svg-tab);
+				mask-size: cover;
+				background-color: black;
+			}
+			
+			.sepicon > span
+			{
+				mask: var(--svg-sep);
+				-webkit-mask-box-image: var(--svg-sep);
+				transform: rotate(90deg);
+				mask-size: cover;
+				background-color: black;
+			}
+			
+			.ownericon > span
+			{
+				mask: var(--svg-owner);
+				-webkit-mask-box-image: var(--svg-owner);
+				mask-size: cover;
+				background-color: black;
+			}
+			
+			.teamicon > span
+			{
+				mask: var(--svg-team);
+				-webkit-mask-box-image: var(--svg-team);
+				mask-size: cover;
+				background-color: black;
+			}
+						
+			.scheduleicon > span
+			{
+				mask: var(--svg-schedule);
+				-webkit-mask-box-image: var(--svg-schedule);
+				mask-size: cover;
+				background-color: black;
+			}
+						
+			.altownericon > span
+			{
+				mask: var(--svg-altowner);
+				-webkit-mask-box-image: var(--svg-altowner);
+				mask-size: cover;
+				background-color: black;
+			}
+						
+			.altteamicon > span
+			{
+				mask: var(--svg-altteam);
+				-webkit-mask-box-image: var(--svg-altteam);
+				mask-size: cover;
+				background-color: black;
+			}
+						
+			.casenoicon > span
+			{
+				mask: var(--svg-caseno);
+				-webkit-mask-box-image: var(--svg-caseno);
+				mask-size: cover;
+				background-color: black;
+			}
+						
+			.casecontacticon > span
+			{
+				mask: var(--svg-casecontact);
+				-webkit-mask-box-image: var(--svg-casecontact);
+				mask-size: cover;
+				background-color: black;
+			}
+						
+			.casephoneicon > span
+			{
+				mask: var(--svg-casephone);
+				-webkit-mask-box-image: var(--svg-casephone);
+				mask-size: cover;
+				background-color: black;
+			}
+						
+			.caseaccounticon > span
+			{
+				mask: var(--svg-caseaccount);
+				-webkit-mask-box-image: var(--svg-caseaccount);
+				mask-size: cover;
+				background-color: black;
+			}
+						
+			.casesubjecticon > span
+			{
+				mask: var(--svg-casesubject);
+				-webkit-mask-box-image: var(--svg-casesubject);
+				mask-size: cover;
+				background-color: black;
+			}
+						
+			.casedescriptionicon > span
+			{
+				mask: var(--svg-casedescription);
+				-webkit-mask-box-image: var(--svg-casedescription);
+				mask-size: cover;
+				background-color: black;
+			}
+	
+	</style>
+	</head>
+	<body>
+		<div id="main">
+			<div style="display:table;width:100%;" id="menubar">
+				<div style="display:table-header-group;">
+					<div style="display:table-row;" id="chooser">
+						<div style="display:table-cell;">
+							<div><b>Template Editor</b> - Choose a Template to edit:</div>
+						</div>
+					</div>
+				</div>
+				<div style="display:table-row-group">
+					<div style="display:table-cell;">
+							<!-- input style="width: 300px;" name="template" id="templatename" list="templatelist"-->
+							<button name="reload" id="reload">Refresh &#x1F504;</button>
+							<select style="width: 300px;" name="templatechoice" id="templatechoice">
+							</select>
+							<button name="load" id="load">Load &#x21A9;</button>
+							<button name="Save" id="savetemplatetext">Save &#x1F4BE;</button>
+							<span> | </span>
+							<button name="reset" id="reset">Reset Current Template &#x21A9;&#xFE0F;</button>
+
+							<div style="float: right;">
+								<label style="visibility: hidden;" id="selectedtemplate"></label>
+								<input style="width: 300px;" name="templatename" id="templatename">
+								<button name="changetemplatename" id="changetemplatename">Change Name &#x1F4DD;</button>
+								<button name="reverttemplatename" id="reverttemplatename" title="Revert to Previous Name"><span>&#x2716;</span></button>
+							</div>
+					</div>
+					<div style="display:table-row" id="insert">
+						<div style="display:table-cell;">
+							<label>Special sequences:</label>
+							<button class="specialsequences" name="insert-tab" id="insert-tab" title="tab character">TAB</button>
+							<button class="specialsequences" name="insert-sep" id="insert-sep" title="separator">{sep}</button>
+							<button class="specialsequences" name="insert-owner" id="insert-owner">{owner}</button>
+							<button class="specialsequences" name="insert-team" id="insert-team">{team}</button>
+							<button class="specialsequences" name="insert-schedule" id="insert-schedule">{schedule}</button>
+							<button class="specialsequences" name="insert-alt-owner" id="insert-alt-owner">{alt-owner}</button>
+							<button class="specialsequences" name="insert-alt-team" id="insert-alt-team">{alt-team}</button>
+							<button class="specialsequences" name="insert-case-no" id="insert-case-no" title="Case Number">{case-no}</button>
+							<button class="specialsequences" name="insert-case-contact" id="insert-case-contact" title="Contact Name">{case-contact}</button>
+							<button class="specialsequences" name="insert-case-phone" id="insert-case-phone" title="Contact Phone">{case-phone}</button>
+							<button class="specialsequences" name="insert-case-account" id="insert-case-account" title="Account Name">{case-account}</button>
+							<button class="specialsequences" name="insert-case-subject" id="insert-case-subject" title="Case Subject">{case-subject}</button>
+							<button class="specialsequences" name="insert-case-description" id="insert-case-description" title="Case Description">{case-description}</button>
+		
+							<div style="float: right">
+							<input style="opacity:0; visibility:hidden;"name="import-file" id="import-file" type="file" />
+							<button id="importbutton"><label for="import-file" name="import-file-button" id="import-file-button">Import All</label></button>
+							<button name="export-file" id="export-file">Export All</button>
+							<!-- <button name="import-all" id="import-all">Import All from Clipboard</button><!-- Implement saveAllTemplate() from background.js -->
+							<!-- <button name="export-all" id="export-all">Export All to Clipboard</button><!-- Implement exportTemplate() from background.js -->
+							<!-- <button style="float: right;" name="Save" id="savetemplatetext">Save</button> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="editor">
+				<textarea id="editorArea" id="templateeditor"></textarea>
+			</div>
+		</div>
+		<div></div>
+		<script type="module" src='./TemplateEditor.js'></script>
+	</body>
+</html>

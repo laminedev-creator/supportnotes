@@ -1,0 +1,108 @@
+mdr9ZVJ4jyj-twf*jyb
+
+
+
+LAB:
+MDP : Csdqd3m0
+9.55.217.235 
+9.55.217.236 
+9.55.217.237
+********************************************************CASE RESSOURCES*****************************************************
+Signature :
+
+Regards,
+Lamine Ndour
+QRadar Support Engineer
+IBM Security - Threat Management
+Provide feedback to my management, Thomas Grey tegray@us.ibm.com
+For information on product updates, education, content, support forums, and managing your cases online, visit us at http://support.ibm.com
+
+qradar ports
+
+
+Hi,
+
+Thank you for contacting IBM Support, my name is Lamine and I will assist you concerning this issue.
+
+Please provide the output of the following commands:
+
+From console:
+
+On apphost (If you have one):
+
+
+			Case Resolution PDFI Template
+
+Solution:
+Public Solution URL:
+Client Consent to Close:
+
+		Status PDFI Template
+			
+			*************************************PDFI***************************************
+Problem Description:
+			
+Steps to Duplicate:
+			
+Desired Behavior:
+			
+Version:
+			
+Action Taken:
+			
+Action Plan:
+			
+Action Owner:
+			
+			*************************************END****************************************
+
+			Logs Steps
+How to collect logs including pertinent application files:
+The Console will collect from both Console and AppHost if it exists.
+==> Admin --> System and Licenses --> select Console --> Action drop down menu --> Collect Log Files --> Advanced drop down menu --> Include Extension Application logs and Include Setup logs
+			OR
+/opt/qradar/support/get_logs.sh -a -S -q3
+
+Out of Scope:
+
+Here at IBM support we are a break-fix organisation.
+Unfortunately, in this case there is nothing broken, so we can only provide limited help and
+recommend useful resources.
+If you would like additional help I would suggest getting in touch with the QRadar Forums - listed
+below.
+If you would like additional help I would suggest getting in touch with your account manager and
+requesting the help of the Security Expert Labs team (previously called professional services).
+They will be able to help you with a step-by-step guide for your specific environment.
+
+
+Hello (CUSTOMER NAME),
+I Hope you are having a great day.   I am assisting (OWNING ENGINEER"S NAME)  with this case and wanted to follow up to see if further assistance is needed.  If further assistance is  still needed, you can reply to this post and I will get back to you shortly.
+It is always a pleasure to assist you!! (Otherwise, please note that this ticket will be archived within 5 days.). 
+
+
+
+
+
+Hello Team,
+
+Thank you for providing the necessary log files.
+
+We've confirmed that there was a failed database migration and escalated the issue with the development team. 
+
+2024-05-07 14:20:26 Failed DB migration: column "sync_ref_table" of relation "import_tasks" already exists
+We will be working together to find a solution as quickly as possible.
+
+
+
+Action Taken:
+
+Found db migration failures in the logs.
+Escalated the issue to the development team
+Action Plan:
+
+We will update you on or findings Monday 13 (or before if there is anything needed by then)
+
+
+Thanks!
+
+Lamine Ndour
