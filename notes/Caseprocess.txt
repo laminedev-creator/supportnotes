@@ -30,7 +30,6 @@ From console:
 
 On apphost (If you have one):
 
-
 			Case Resolution PDFI Template
 
 Solution:
