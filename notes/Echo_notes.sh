@@ -33,7 +33,7 @@ docker rmi -f $(docker images -f "dangling=true" -q)
 			#Rebuild registry:
 /opt/qradar/bin/docker_apps_registry_restore.sh
 			#Then rebuild images:
-/opt/qradar/bin/upgrade_applications.sh
+/opt/qradar/bin/upgrade_applications.py --include_stopped_application --app_definition_id
 			#Find the Apphost:
 psql -U qradar -c "select * from managedhost where appliancetype like '%4000%';"
 
