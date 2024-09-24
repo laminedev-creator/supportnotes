@@ -64,7 +64,7 @@ The Console will collect from both Console and AppHost if it exists.
 
 Out of Scope:
 
-Here at IBM support we are a break-fix organisation.
+Here at  IBM support we are a break-fix organisation.
 Unfortunately, in this case there is nothing broken, so we can only provide limited help and
 recommend useful resources.
 If you would like additional help I would suggest getting in touch with the QRadar Forums - listed
